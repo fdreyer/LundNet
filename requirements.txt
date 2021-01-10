@@ -1,0 +1,9 @@
+hyperopt==0.1.1
+setuptools==40.6.2
+gym==0.10.9
+matplotlib==3.0.1
+Keras==2.2.4
+numpy==1.15.4
+rl==2.4
+fastjet==0.0.3
+hfile==1.0.8

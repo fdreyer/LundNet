@@ -1,0 +1,18 @@
+model_name: tree-lund-net
+model_params: {'conv_params': [[32, 32], [32, 32], [64, 64], [64, 64], [128, 128], [128, 128]], 'fc_params': [(256, 0.1)]}
+data_format: lund3
+lund_dimension: 3
+lund_ln_kt_min: None
+lund_ln_delta_min: None
+rsd-groom: None
+remove-secondary: False
+date: 2020-05-26
+model_path: saved_models/TreeLundNet/WTagging/Lund_dim3_z-delta-kt/W_QCD_500GeV_Lund_dim3_z-delta-kt_TreeLundNet
+test_sig: data/test/test_WW_500GeV.json.gz
+test_bkg: data/test/test_QCD_500GeV.json.gz
+train_sig: data/train/WW_500GeV.json.gz
+train_bkg: data/train/QCD_500GeV.json.gz
+accuracy: 0.87001
+auc: 0.9347001016
+inv_bkg_at_sig_50: 499.99999999999955
+inv_bkg_at_sig_30: 2941.176470588175
