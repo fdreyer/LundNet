@@ -12,7 +12,7 @@ with open('README.md') as f:
     long_desc = f.read()
 
 setup(name= "lundnet",
-      version = '0.9.0',
+      version = '1.0.0',
       description = "A jet tagging algorithm based on graph networks",
       author = "F. Dreyer, H. Qu",
       author_email = "frederic.dreyer@cern.ch, huilin.qu@cern.ch",
