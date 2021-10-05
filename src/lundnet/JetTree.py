@@ -22,14 +22,17 @@ class LundCoordinates:
     # ----------------------------------------------------------------------
     def __init__(self, j1, j2):
         """Define a number of variables associated with the declustering."""
-        delta = np.float32(j1.delta_R(j2))
+        delta = np.float32(max(1e-6, j1.delta_R(j2)))
         z = np.float32(j2.pt() / (j1.pt() + j2.pt()))
         self.lnm = np.float32(0.5 * math.log(abs((j1 + j2).m2())))
         self.lnKt = np.float32(math.log(j2.pt() * delta))
         self.lnz = np.float32(math.log(z))
         self.lnDelta = np.float32(math.log(delta))
         self.lnKappa = np.float32(math.log(z * delta))
-        self.psi = np.float32(math.atan((j1.rap() - j2.rap()) / (j1.phi() - j2.phi())))
+        try:
+            self.psi = np.float32(math.atan((j1.rap() - j2.rap()) / (j1.phi() - j2.phi())))
+        except ZeroDivisionError:
+            self.psi = 0
 
     # ----------------------------------------------------------------------
     @staticmethod
