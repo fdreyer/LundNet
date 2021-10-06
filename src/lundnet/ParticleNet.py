@@ -55,11 +55,12 @@ class ParticleNet(nn.Module):
 
     def forward(self, batch_graph, features):
         g = batch_graph
+        segs = batch_graph.batch_num_nodes().cpu().numpy().tolist()
         fts = self.bn_fts(features)
         outputs = []
         for idx, (k, conv) in enumerate(zip(self.k_neighbors, self.edge_convs)):
             if idx > 0:
-                g = remove_self_loop(segmented_knn_graph(fts, k + 1, batch_graph.batch_num_nodes))
+                g = remove_self_loop(segmented_knn_graph(fts, k + 1, segs)).to(features.device)
             fts = conv(g, fts)
             if self.use_fusion:
                 outputs.append(fts)

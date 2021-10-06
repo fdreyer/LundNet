@@ -12,7 +12,10 @@ from .JetTree import JetTree, LundCoordinates
 from .read_data import Jets
 import torch
 import torch.nn.functional as F
-from uproot_methods import TLorentzVectorArray, TLorentzVector
+try:
+    from uproot_methods import TLorentzVectorArray, TLorentzVector
+except ImportError:
+    from uproot3_methods import TLorentzVectorArray, TLorentzVector
 import time
 import pandas as pd
 
